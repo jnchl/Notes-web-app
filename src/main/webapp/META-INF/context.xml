@@ -1,0 +1,24 @@
+<Context>
+    <Resource name="jdbc/notes"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              type="javax.sql.DataSource"
+              username="root"
+              password="kaktus"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/notes?serverTimezone=UTC"/>
+
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           dataSourceName="jdbc/notes"
+           localDataSource="true"
+           userTable="notes_user"
+           userNameCol="username"
+           userCredCol="pass"
+           userRoleTable="permission"
+           roleNameCol="access_level">
+
+        <CredentialHandler
+                className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+                algorithm="SHA-256" />
+
+    </Realm>
+</Context>
