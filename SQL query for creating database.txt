@@ -1,0 +1,36 @@
+CREATE SCHEMA IF NOT EXISTS `notes`;
+
+CREATE TABLE IF NOT EXISTS `notes`.`notes_user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `pass` VARCHAR(200) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
+
+CREATE TABLE IF NOT EXISTS `notes`.`note` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `creator_id` INT NOT NULL,
+  `title` VARCHAR(100) NOT NULL,
+  `content` MEDIUMTEXT NOT NULL,
+  `creation_date` DATETIME NOT NULL,
+  `color` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `creator_id` (`creator_id` ASC) VISIBLE,
+  CONSTRAINT `note_ibfk_1`
+    FOREIGN KEY (`creator_id`)
+    REFERENCES `notes`.`notes_user` (`id`));
+
+CREATE TABLE IF NOT EXISTS `notes`.`permission` (
+  `access_level` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`username`),
+  INDEX `fk_permission_user` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `fk_permission_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `notes`.`notes_user` (`id`));
+
+
+
+
