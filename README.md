@@ -10,6 +10,7 @@ TODO \
 -improve look of the app (priority: fix non centred selection box for sorting) \
 -setup error handling (throwing Runtime errors when any inconvenience occurs is not a particularly good idea) \
 -add alerts when user inputs wrong username or password (or when registering already used username) \
+-add color changing and cancel button in notes editor \
 -create tests
 
 I didn't quite know how to use dependency injection in Jakarta EE so I've implemented service classes as singletons \
