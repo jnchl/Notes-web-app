@@ -1,4 +1,4 @@
-<a> A Jakarta EE based web application for creating and displaying notes </a>
+<a> A WIP Jakarta EE based web application for creating and displaying notes </a>
 
 Currently working: \
 -signing in and signing up \
